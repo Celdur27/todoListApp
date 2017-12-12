@@ -1,0 +1,22 @@
+.todo-details-header {
+    width: 1000px;
+    margin: auto;
+}
+
+.todo-details-header .btn {
+    float: left;
+    width: 80px;
+}
+
+.todo-details-header h1 {
+    margin-right: 80px;
+}
+
+.todo-body .checkbox {
+    display: inline-block;
+    width: 10%;
+}
+
+.todo-completed {
+    margin-bottom: 20px;
+}

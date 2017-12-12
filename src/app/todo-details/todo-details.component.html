@@ -1,0 +1,53 @@
+<div class="todo-details-header">
+  <button type="button" class="btn btn-default" (click)="goBack()">{{ 'HOME.GOBACK' | translate }}</button>
+  <h1>
+      {{ 'HOME.TODOLIST' | translate }}
+  </h1>
+</div>
+
+<div [ngSwitch]='status'>
+  <div *ngSwitchCase="'loading'">
+    <div class="loader"></div>
+  </div>
+  <div *ngSwitchCase="'active'">
+    <div class="todo-body">
+      <div class="todo-func">
+        <h2>
+          {{ listName }}
+        </h2>
+        <form (ngSubmit)="addTodo()" #newTodo="ngForm">
+          <input type="text" class="form-control add-new-input" id="todoName" name="todoName" [(ngModel)]="newTodoName" #todoName="ngModel" placeholder="{{ 'HOME.NEW_TASK' | translate }}" required>
+          <button type="submit" class="btn btn-success" [disabled]="newTodo.pristine || newTodo.invalid">{{ 'HOME.ADD' | translate }}</button>
+        </form>
+        <input type="text" class="form-control search-input" id="searchTodo" name="searchTodo" [(ngModel)]="filterName" #searchTodo="ngModel" placeholder="{{ 'HOME.SEARCH' | translate }}">
+      </div>
+
+      <div class="btn-group todo-completed" data-toggle="buttons">
+        <label class="btn btn-primary active" [ngClass]="{active: completeState === completeStateEnum.all}">
+          <input type="radio" name="options" id="all" autocomplete="off" (click)="changeCompleteState(completeStateEnum.all)" checked> {{ 'HOME.ALL' | translate }}
+        </label>
+        <label class="btn btn-primary" [ngClass]="{active: completeState === completeStateEnum.incompleted}">
+          <input type="radio" name="options" id="incompleted" autocomplete="off" (click)="changeCompleteState(completeStateEnum.incompleted)"> {{ 'HOME.INCOMPLETE' | translate }}
+        </label>
+        <label class="btn btn-primary" [ngClass]="{active: completeState === completeStateEnum.completed}">
+          <input type="radio" name="options" id="completed" autocomplete="off" (click)="changeCompleteState(completeStateEnum.completed)"> {{ 'HOME.COMPLETE' | translate }}
+        </label>
+      </div>
+
+      <ul class="list-group">
+        <li *ngFor="let todo of todosToShow | filter: {name: filterName}" class="list-group-item">
+          <form (ngSubmit)="updateTodo(todo.id, todo.is_complete, todo.name)" #updateTodoForm="ngForm">
+            <div class="checkbox">
+                <label><input type="checkbox" [(ngModel)]="todo.is_complete" id="todoComplete" name="todoComplete" #todoComplete="ngModel"></label>
+            </div>
+            <input type="text" class="form-control" id="todoName" name="todoName" [(ngModel)]="todo.name" #todoName="ngModel" required>
+            <button type="submit" class="btn btn-info" [disabled]="updateTodoForm.pristine || updateTodoForm.invalid">{{ 'HOME.SAVE' | translate }}</button>
+          </form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" (click)="deleteTodo(todo.id)">{{ 'HOME.DELETE' | translate }}</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

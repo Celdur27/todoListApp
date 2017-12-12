@@ -1,0 +1,42 @@
+<div class="todo-list-header">
+  <h1>
+    {{ 'HOME.TODOLIST' | translate }}
+  </h1>
+</div>
+<div [ngSwitch]='status'>
+  <div *ngSwitchCase="'loading'">
+    <div class="loader"></div>
+  </div>
+  <div *ngSwitchCase="'active'">
+    <div class="todo-body">
+      <div class="todo-func">
+        <form (ngSubmit)="addList()" #newTodoList="ngForm">
+          <input type="text" class="form-control add-new-input" id="listName" name="listName" [(ngModel)]="newListName" #listName="ngModel" placeholder="{{ 'HOME.NEW_LIST' | translate }}" required>
+          <button type="submit" class="btn btn-success add-btn" [disabled]="newTodoList.pristine || newTodoList.invalid">{{ 'HOME.ADD' | translate }}</button>
+        </form>
+        <input type="text" class="form-control search-input" id="searchTodo" name="searchTodo" [(ngModel)]="filterName" #searchTodo="ngModel" placeholder="{{ 'HOME.SEARCH' | translate }}">
+      </div>
+      
+      <ul class="list-group">
+        <li *ngFor="let todo of todos | filter: {name: filterName}" class="list-group-item">
+          <form (ngSubmit)="updateList(todo.id, todo.name)" #updateTodoList="ngForm">
+            <input type="text" class="form-control" id="listEdit" name="listEdit" [(ngModel)]="todo.name" #listEdit="ngModel" required>
+            <label>{{ 'HOME.TASKS' | translate }}: {{ todo.todos_count }}</label>
+            <button type="submit" class="btn btn-info" [disabled]="updateTodoList.pristine || updateTodoList.invalid">{{ 'HOME.SAVE' | translate }}</button>
+          </form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" (click)="deleteList(todo.id)">{{ 'HOME.DELETE' | translate }}</button>
+            <button type="button" class="btn btn-default" routerLink="/todos/{{todo.id}}">{{ 'HOME.DETAILS' | translate }}</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!--<p>{{ todo.todos_count }}</p>-->

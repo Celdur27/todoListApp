@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.add-new-input {
+    float: left;
+}
+
+.search-input {
+    float: right;
+}
+
+form {
+    display: inline;
+}
+
+.todo-body {
+    width: 1000px;
+    margin: auto;
+}
+
+.todo-body input {
+    width: 50%;
+    display: inline-block;
+}
+
+.todo-func {
+    margin: 20px 0;
+}
+
+.todo-func form {
+    width: 70%;
+    margin: 0 20px;
+}
+
+.todo-func form input {
+    width: 60%;
+}
+
+.todo-func input {
+    width: 25%;
+}

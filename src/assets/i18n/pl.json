@@ -1,0 +1,17 @@
+{
+    "HOME": {
+        "TODOLIST": "Lista Todo",
+        "NEW_LIST": "Nowa Lista",
+        "ADD": "Dodaj",
+        "SEARCH": "Szukaj",
+        "TASKS": "Zadania",
+        "SAVE": "Zapisz",
+        "DELETE": "Usuń",
+        "DETAILS": "Szczegóły",
+        "GOBACK": "Powrót",
+        "NEW_TASK": "Nowe Zadanie",
+        "ALL": "Wszystkie",
+        "INCOMPLETE": "Nieukończone",
+        "COMPLETE": "Ukończone"
+    }
+}

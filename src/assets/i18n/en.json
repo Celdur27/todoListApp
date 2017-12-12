@@ -1,0 +1,17 @@
+{
+    "HOME": {
+        "TODOLIST": "Todo List",
+        "NEW_LIST": "New List",
+        "ADD": "Add",
+        "SEARCH": "Search",
+        "TASKS": "Tasks",
+        "SAVE": "Save",
+        "DELETE": "Delete",
+        "DETAILS": "Details",
+        "GOBACK": "Go Back",
+        "NEW_TASK": "New Task",
+        "ALL": "All",
+        "INCOMPLETE": "Incomplete",
+        "COMPLETE": "Complete"
+    }
+}
